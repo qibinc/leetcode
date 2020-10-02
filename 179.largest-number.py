@@ -6,21 +6,22 @@
 
 
 # @lc code=start
+from functools import cmp_to_key
+
 class Solution:
-    def __init__(self):
-        self.root = Node(0)
 
-    def largestNumber(self, nums) -> str:
-        def cmp(x, y):
-            if x * 10 ** len(str(y)) + y > y * 10 ** len(str(x)) + x:
-                return 1
-            elif x * 10 ** len(str(y)) + y == y * 10 ** len(str(x)) + x:
-                return 0
-            else:
-                return -1
+    @staticmethod
+    def cmp(num1, num2):
+        if int(str(num1) + str(num2)) < int(str(num2) + str(num1)):
+            return -1
+        elif int(str(num1) + str(num2)) == int(str(num2) + str(num1)):
+            return 0
+        else:
+            return 1
 
-        sorted(nums, cmp=cmp)
-        return "".join(map(str, nums))
+    def largestNumber(self, nums: List[int]) -> str:
+        nums.sort(key=cmp_to_key(Solution.cmp), reverse=True)
+        return str(int("".join(map(str, nums))))
 
 a = Solution()
 a.largestNumber([3, 30, 34, 5, 9])
