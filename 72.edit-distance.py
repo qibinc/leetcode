@@ -8,6 +8,7 @@
 
 import numpy as np
 
+
 class Solution:
     def minDistance(self, word1: str, word2: str) -> int:
         f = np.zeros((len(word1) + 1, len(word2) + 1), dtype=int)
@@ -20,7 +21,7 @@ class Solution:
                     f[i, j] = min(f[i, j], f[i - 1, j - 1])
         return f[len(word1), len(word2)]
 
-        
+
 # @lc code=end
 
 a = Solution()

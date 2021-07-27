@@ -7,5 +7,6 @@ class Solution:
         ans += word1[l:] + word2[l:]
         return ans
 
+
 a = Solution()
 print(a.mergeAlternately("ab", "pqrs"))

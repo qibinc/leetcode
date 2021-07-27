@@ -18,5 +18,6 @@ class Solution:
         for i in range(len(nums)):
             ans.append(prefix[i] * suffix[len(nums) - i - 1])
         return ans
-        
+
+
 # @lc code=end

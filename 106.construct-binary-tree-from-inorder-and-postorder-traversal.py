@@ -18,10 +18,15 @@ class Solution:
         root = postorder[-1]
         root_inorder_idx = inorder.index(root)
         left_inorder = inorder[:root_inorder_idx]
-        right_inorder = inorder[root_inorder_idx + 1:]
-        left_postorder = postorder[:len(left_inorder)]
-        right_postorder = postorder[len(left_inorder):-1]
-        node = TreeNode(root, self.buildTree(left_inorder, left_postorder), self.buildTree(right_inorder, right_postorder))
+        right_inorder = inorder[root_inorder_idx + 1 :]
+        left_postorder = postorder[: len(left_inorder)]
+        right_postorder = postorder[len(left_inorder) : -1]
+        node = TreeNode(
+            root,
+            self.buildTree(left_inorder, left_postorder),
+            self.buildTree(right_inorder, right_postorder),
+        )
         return node
-        
+
+
 # @lc code=end

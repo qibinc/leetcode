@@ -13,5 +13,6 @@ class Solution:
             ones = (ones ^ x) & (~twos)
             twos = (twos ^ x) & (~ones)
         return ones
-# @lc code=end
 
+
+# @lc code=end

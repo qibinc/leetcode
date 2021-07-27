@@ -12,7 +12,13 @@ class Solution:
             # expand from k
             v[k] = True
             for j in range(len(points)):
-                if not v[j] and abs(points[j][0] - points[k][0]) + abs(points[j][1] - points[k][1]) < d[j]:
-                    d[j] = abs(points[j][0] - points[k][0]) + abs(points[j][1] - points[k][1])
+                if (
+                    not v[j]
+                    and abs(points[j][0] - points[k][0])
+                    + abs(points[j][1] - points[k][1])
+                    < d[j]
+                ):
+                    d[j] = abs(points[j][0] - points[k][0]) + abs(
+                        points[j][1] - points[k][1]
+                    )
         return sum(d)
-

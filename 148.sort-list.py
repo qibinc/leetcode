@@ -33,11 +33,11 @@ class Solution:
         if slow is not None:
             cur.next = slow
         return pre_head.next
-    
+
     def insert(self, prev, v):
         nxt = prev.next
         prev.next = v
         v.next = nxt
-        
-# @lc code=end
 
+
+# @lc code=end

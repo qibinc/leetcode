@@ -15,32 +15,34 @@ class Node:
         self.next = next
 """
 
+
 class Solution:
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: "Node") -> "Node":
         prev = tail = None
         node = root
-        
+
         while node:
             if node.left:
                 if prev:
                     prev.next = node.left
                 prev = node.left
-                if not(tail):
+                if not (tail):
                     tail = prev
-                
+
             if node.right:
                 if prev:
                     prev.next = node.right
                 prev = node.right
-                if not(tail):
+                if not (tail):
                     tail = prev
-                
+
             node = node.next
             if not node:
                 node = tail
                 prev = tail = None
-                
+
         return root
+
 
 # class Solution:
 
@@ -69,6 +71,5 @@ class Solution:
 #         self.connect(root.left)
 #         self.connect(root.right)
 #         return root
-        
-# @lc code=end
 
+# @lc code=end

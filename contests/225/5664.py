@@ -1,4 +1,6 @@
 from itertools import accumulate
+
+
 class Solution:
     def bs(self, arr, l, r, v):
         while l < r - 1:
@@ -23,6 +25,7 @@ class Solution:
             if n > arr[nidx]:
                 nidx += 1
             return (1 + (idx + 1)) * (idx + 1) // 2 + nidx + 1
+
 
 a = Solution()
 print(a.minimumBoxes(207818))

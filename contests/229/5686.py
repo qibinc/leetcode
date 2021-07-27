@@ -1,6 +1,7 @@
 from typing import List
 from itertools import accumulate
 
+
 class Solution:
     def minOperations(self, boxes: str) -> List[int]:
         boxes = list(map(int, boxes))
@@ -16,6 +17,7 @@ class Solution:
             suf += boxes[i]
             suf_ops += suf
         return list(reversed(ans))
+
 
 a = Solution()
 print(a.minOperations("0"))

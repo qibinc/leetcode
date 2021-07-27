@@ -1,6 +1,7 @@
 import heapq
 from typing import List
 
+
 class Solution:
     def eatenApples(self, apples: List[int], days: List[int]) -> int:
         n = len(apples)
@@ -25,6 +26,7 @@ class Solution:
                 if app - 1 > 0:
                     heapq.heappush(to_rot, (d, app - 1))
         return ans
+
 
 a = Solution()
 print(a.eatenApples([1, 2, 3, 5, 2], [3, 2, 1, 4, 2]))

@@ -29,14 +29,15 @@ class Solution:
             if tail.next == v:
                 tail = tail.next
         return pre_head.next
-    
+
     def delete(self, prev, cur):
         prev.next = cur.next
         return cur
-    
+
     def insert(self, prev, cur):
         nxt = prev.next
         prev.next = cur
         cur.next = nxt
+
 
 # @lc code=end

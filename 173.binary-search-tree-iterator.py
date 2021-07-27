@@ -12,7 +12,6 @@
 #         self.left = left
 #         self.right = right
 class BSTIterator:
-
     def __init__(self, root: TreeNode):
         self.path = [root] if root else []
         self.left = [False]
@@ -64,10 +63,8 @@ class BSTIterator:
         return bool(self.path)
 
 
-
 # Your BSTIterator object will be instantiated and called as such:
 # obj = BSTIterator(root)
 # param_1 = obj.next()
 # param_2 = obj.hasNext()
 # @lc code=end
-

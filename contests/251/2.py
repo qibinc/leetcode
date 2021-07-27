@@ -16,8 +16,9 @@ class Solution:
                     break
                 ans += x
         if len(ans) < len(num):
-            ans += num[len(ans)-len(num):]
+            ans += num[len(ans) - len(num) :]
         return ans
 
+
 a = Solution()
-print(a.maximumNumber("132", [9,8,5,0,3,6,4,2,6,8]))
+print(a.maximumNumber("132", [9, 8, 5, 0, 3, 6, 4, 2, 6, 8]))

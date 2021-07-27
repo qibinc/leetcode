@@ -7,7 +7,7 @@ class Solution:
         # return ans if ans > 0 else 0
         word = word1 + word2
         return max(self.longestCommonSubsequence(word, word[::-1], len(word2)), 0)
-    
+
     def longestCommonSubsequence(self, word1: str, word2: str, k: int):
         n, m = len(word1), len(word2)
         l = n - k
@@ -22,7 +22,9 @@ class Solution:
                     f[i][j] = max(f[i][j], f[i][j - 1])
                 if i <= l or i > l and f[i - 1][j] > 0:
                     f[i][j] = max(f[i - 1][j], f[i][j])
-                if (i <= l or i > l and f[i - 1][j] > 0) and (j <= k or j > k and f[i - 1][j - 1] > 0):
+                if (i <= l or i > l and f[i - 1][j] > 0) and (
+                    j <= k or j > k and f[i - 1][j - 1] > 0
+                ):
                     if word1[i] == word2[j]:
                         f[i][j] = max(f[i][j], f[i - 1][j - 1] + 1)
         ans = float("-inf")
@@ -33,7 +35,8 @@ class Solution:
             if f[i - 1][n - i] > 0:
                 ans = max(ans, f[i - 1][n - i] * 2 + 1)
         return ans
-        
+
+
 a = Solution()
 print(a.longestPalindrome("cacb", "cbba"))
 print(a.longestPalindrome("ab", "ab"))

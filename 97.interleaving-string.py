@@ -20,8 +20,10 @@ class Solution:
         for i in range(2, len(s3)):
             for j in range(max(0, i - len(s2)), min(len(s1), i)):
                 # f[i, j] = (f[i - 1, j - 1] and s3[i] == s1[j]) or (f[i - 1, j] and s3[i] == s2[i - j - 1])
-                f[i][j] = (f[i - 1][j - 1] and s3[i] == s1[j]) or (f[i - 1][j] and s3[i] == s2[i - j - 1])
+                f[i][j] = (f[i - 1][j - 1] and s3[i] == s1[j]) or (
+                    f[i - 1][j] and s3[i] == s2[i - j - 1]
+                )
         return f[len(s3) - 1][len(s1) - 1]
-        
-# @lc code=end
 
+
+# @lc code=end

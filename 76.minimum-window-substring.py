@@ -7,6 +7,7 @@
 # @lc code=start
 from collections import defaultdict, Counter
 
+
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         ch_dict = defaultdict(int)
@@ -25,11 +26,11 @@ class Solution:
                         ch_dict[s[i]] -= 1
                     i += 1
             if cnt == len(target) and (not ans or j - i + 1 < len(ans)):
-                ans = s[i:j+1]
+                ans = s[i : j + 1]
         return ans
-            
+
+
 a = Solution()
 print(a.minWindow("ab", "a"))
-        
-# @lc code=end
 
+# @lc code=end

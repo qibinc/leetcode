@@ -16,6 +16,6 @@ class Solution:
                 break
             ans += int(bin(m)[i])
         return ans * 2 ** (len(bin(m)) - i - 1)
-        
-# @lc code=end
 
+
+# @lc code=end

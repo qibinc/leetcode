@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def rollout(self, grid, idx):
         for line in grid:
@@ -23,7 +24,18 @@ class Solution:
         for i in range(1, len(grid[0]) - 1):
             ans.append(self.rollout(grid, i))
         return ans
-        
+
+
 a = Solution()
-print(a.findBall([[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]))
+print(
+    a.findBall(
+        [
+            [1, 1, 1, -1, -1],
+            [1, 1, 1, -1, -1],
+            [-1, -1, -1, 1, 1],
+            [1, 1, 1, 1, -1],
+            [-1, -1, -1, -1, -1],
+        ]
+    )
+)
 print(a.findBall([[-1]]))

@@ -12,6 +12,8 @@
 #         self.left = left
 #         self.right = right
 from collections import deque
+
+
 class Solution:
     def zigzagLevelOrder(self, root: TreeNode) -> List[List[int]]:
         q = deque()
@@ -33,5 +35,6 @@ class Solution:
             if node.right is not None:
                 q.append((node.right, level + 1))
         return ans
-# @lc code=end
 
+
+# @lc code=end

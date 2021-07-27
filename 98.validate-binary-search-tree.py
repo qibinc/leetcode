@@ -15,16 +15,18 @@ class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
         valid, maxn, minn = self._isValidBST(root)
         return valid
-    
+
     def _isValidBST(self, root: TreeNode) -> (bool, int, int):
         if root is None:
-            return True, -float('inf'), float('inf')
+            return True, -float("inf"), float("inf")
         minn = root.val
+
         def val(node):
             if node is not None:
                 return node.val
             else:
                 return -1
+
         if root.left is not None:
             valid, submaxn, subminn = self._isValidBST(root.left)
             if not valid or submaxn >= root.val:
@@ -37,5 +39,6 @@ class Solution:
                 return False, None, None
             maxn = max(maxn, submaxn)
         return True, maxn, minn
-# @lc code=end
 
+
+# @lc code=end

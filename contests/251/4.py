@@ -1,8 +1,8 @@
 from typing import List
 from collections import defaultdict
 
-class Solution:
 
+class Solution:
     def serialize_dict(self, d):
         return f"{{{', '.join([f'({k}, {d[k]})' for k in d])}}}"
 
@@ -33,16 +33,62 @@ class Solution:
             removed = False
             for folder in path:
                 s += ", " + folder
-                if s in self.path_to_serailzed and self.count[self.path_to_serailzed[s]] > 1:
+                if (
+                    s in self.path_to_serailzed
+                    and self.count[self.path_to_serailzed[s]] > 1
+                ):
                     removed = True
                     break
             if not removed:
                 ans.append(path)
         return ans
 
+
 a = Solution()
-print(a.deleteDuplicateFolder([["a"],["c"],["d"],["a","b"],["c","b"],["d","a"]]))
-print(a.deleteDuplicateFolder([["a"],["c"],["a","b"],["c","b"],["a","b","x"],["a","b","x","y"],["w"],["w","y"]]))
-print(a.deleteDuplicateFolder([["a","b"],["c","d"],["c"],["a"]]))
-print(a.deleteDuplicateFolder([["a"],["a","x"],["a","x","y"],["a","z"],["b"],["b","x"],["b","x","y"],["b","z"]]))
-print(a.deleteDuplicateFolder([["a"],["a","x"],["a","x","y"],["a","z"],["b"],["b","x"],["b","x","y"],["b","z"],["b","w"]]))
+print(
+    a.deleteDuplicateFolder([["a"], ["c"], ["d"], ["a", "b"], ["c", "b"], ["d", "a"]])
+)
+print(
+    a.deleteDuplicateFolder(
+        [
+            ["a"],
+            ["c"],
+            ["a", "b"],
+            ["c", "b"],
+            ["a", "b", "x"],
+            ["a", "b", "x", "y"],
+            ["w"],
+            ["w", "y"],
+        ]
+    )
+)
+print(a.deleteDuplicateFolder([["a", "b"], ["c", "d"], ["c"], ["a"]]))
+print(
+    a.deleteDuplicateFolder(
+        [
+            ["a"],
+            ["a", "x"],
+            ["a", "x", "y"],
+            ["a", "z"],
+            ["b"],
+            ["b", "x"],
+            ["b", "x", "y"],
+            ["b", "z"],
+        ]
+    )
+)
+print(
+    a.deleteDuplicateFolder(
+        [
+            ["a"],
+            ["a", "x"],
+            ["a", "x", "y"],
+            ["a", "z"],
+            ["b"],
+            ["b", "x"],
+            ["b", "x", "y"],
+            ["b", "z"],
+            ["b", "w"],
+        ]
+    )
+)

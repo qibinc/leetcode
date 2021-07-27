@@ -9,10 +9,10 @@ class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
         stack = []
         for t in tokens:
-            if t in ['+', '-', '*', '/']:
+            if t in ["+", "-", "*", "/"]:
                 o1 = stack.pop()
                 o2 = stack.pop()
-                if t == '/':
+                if t == "/":
                     v = int(abs(o2) // abs(o1))
                     if o1 * o2 < 0:
                         v = -v
@@ -22,5 +22,6 @@ class Solution:
             else:
                 stack.append(int(t))
         return stack.pop()
-# @lc code=end
 
+
+# @lc code=end

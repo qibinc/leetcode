@@ -13,16 +13,17 @@ class Node:
         self.neighbors = neighbors if neighbors is not None else []
 """
 
+
 class Solution:
     def __init__(self):
         self.val2node = {}
 
-    def cloneGraph(self, node: 'Node') -> 'Node':
+    def cloneGraph(self, node: "Node") -> "Node":
         if node is None:
             return None
         self.cloneGraphRecursive(node)
         return self.val2node[node.val]
-    
+
     def cloneGraphRecursive(self, node):
         if not node.val in self.val2node:
             self.val2node[node.val] = Node(node.val)
@@ -33,4 +34,3 @@ class Solution:
 
 
 # @lc code=end
-

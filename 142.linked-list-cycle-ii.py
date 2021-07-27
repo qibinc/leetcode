@@ -11,6 +11,7 @@
 #         self.val = x
 #         self.next = None
 
+
 class Solution:
     def detectCycle(self, head: ListNode) -> ListNode:
         fast, slow = head, head
@@ -28,5 +29,6 @@ class Solution:
             last = last.next
             slow = slow.next
         return last
+
 
 # @lc code=end

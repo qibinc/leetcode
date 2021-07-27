@@ -1,10 +1,12 @@
 from collections import Counter
+
+
 class Solution:
     def minCharacters(self, a: str, b: str) -> int:
         ans = min(self._minCharacters(a, b), self._minCharacters(b, a))
         ans = min(ans, len(a) + len(b) - Counter(a + b).most_common(1)[0][1])
         return ans
-        
+
     def _minCharacters(self, a: str, b: str) -> int:
         cnta = Counter(a)
         cntb = Counter(b)

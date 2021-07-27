@@ -1,9 +1,11 @@
 from typing import List
 
+
 class BinNode:
     def __init__(self, left=None, right=None):
         self.left = left
         self.right = right
+
 
 class Solution:
     def findmax(self, node, x):
@@ -48,7 +50,8 @@ class Solution:
             ans[idx] = self.findmax(root, x) if i > 0 else -1
         return ans
 
+
 a = Solution()
 
-print(a.maximizeXor([0,1,2,3,4], [[3,1],[1,3],[5,6]]))
-print(a.maximizeXor([5,2,4,6,6,3], [[12,4],[8,1],[6,3]]))
+print(a.maximizeXor([0, 1, 2, 3, 4], [[3, 1], [1, 3], [5, 6]]))
+print(a.maximizeXor([5, 2, 4, 6, 6, 3], [[12, 4], [8, 1], [6, 3]]))

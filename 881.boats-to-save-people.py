@@ -4,6 +4,7 @@
 # [881] Boats to Save People
 #
 from typing import List
+
 # @lc code=start
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
@@ -23,6 +24,7 @@ class Solution:
         if i == j:
             ans += 1
         return ans
+
 
 # @lc code=end
 

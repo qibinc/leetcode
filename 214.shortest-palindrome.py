@@ -6,7 +6,6 @@
 
 # @lc code=start
 class Solution:
-
     def shortestPalindrome(self, s: str) -> str:
         if not s:
             return s
@@ -21,7 +20,8 @@ class Solution:
             f[i] = t
         length = max(len(s) - f[len(q) - 1], 0)
         return s[::-1][:length] + s
-        
+
+
 # @lc code=end
 
 a = Solution()

@@ -18,4 +18,3 @@ class Solution:
                 sum = cost[i]
                 cnt = 1
         return ans
-

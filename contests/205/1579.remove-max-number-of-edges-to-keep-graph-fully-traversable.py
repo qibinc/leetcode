@@ -53,4 +53,3 @@ class Solution:
         i = pa[i]
         j = pa[j]
         pa[j] = i
-

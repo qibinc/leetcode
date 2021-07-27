@@ -13,12 +13,12 @@ class Solution:
             return [[s]]
         result = []
         for i in range(1, len(s) + 1):
-            if s[len(s)-i:] == s[len(s)-i:][::-1]:
-                ret = self.partition(s[:len(s)-i])
+            if s[len(s) - i :] == s[len(s) - i :][::-1]:
+                ret = self.partition(s[: len(s) - i])
                 for x in ret:
-                    x.append(s[len(s)-i:])
+                    x.append(s[len(s) - i :])
                     result.append(x)
         return result
-        
-# @lc code=end
 
+
+# @lc code=end

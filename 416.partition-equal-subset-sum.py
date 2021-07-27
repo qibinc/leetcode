@@ -20,6 +20,6 @@ class Solution:
                 if x >= num:
                     f[x] |= f[x - num]
         return f[s]
-        
-# @lc code=end
 
+
+# @lc code=end

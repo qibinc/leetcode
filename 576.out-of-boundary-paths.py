@@ -25,6 +25,8 @@ class Solution:
             for xj in range(1, n + 1):
                 ans_sum += f[0][xj] + f[m + 1][xj]
         return ans_sum % mod
+
+
 # @lc code=end
 
 a = Solution()

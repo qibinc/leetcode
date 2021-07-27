@@ -15,6 +15,7 @@ class Node:
         self.next = next
 """
 
+
 class Solution:
     # def connect(self, root: 'Node') -> 'Node':
     #     ret = self._connect(root)
@@ -23,7 +24,7 @@ class Solution:
     #         ans += x + ['#']
     #     return ans
 
-    def connect(self, root: 'Node') -> 'Node':
+    def connect(self, root: "Node") -> "Node":
         if root is None:
             return None
         # left_ret = self.connect(root.left)
@@ -37,5 +38,5 @@ class Solution:
         self.connect(root.right)
         return root
 
-# @lc code=end
 
+# @lc code=end

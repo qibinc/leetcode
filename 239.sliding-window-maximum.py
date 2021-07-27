@@ -23,11 +23,11 @@ class Solution:
                 ans.append(q[0][0])
         return ans
 
-        
+
 # @lc code=end
 
 a = Solution()
-print(a.maxSlidingWindow([1,3,-1,-3,5,3,6,7], 3))
+print(a.maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3))
 print(a.maxSlidingWindow([1], 1))
 print(a.maxSlidingWindow([1, -1], 1))
 print(a.maxSlidingWindow([9, 11], 2))

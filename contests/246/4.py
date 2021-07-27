@@ -1,6 +1,7 @@
 import numpy as np
 from typing import List
 
+
 class Solution:
     def minDifference(self, nums: List[int], queries: List[List[int]]) -> List[int]:
         count = np.zeros((len(nums) + 1, 101))
@@ -21,6 +22,7 @@ class Solution:
             ans.append(min_diff)
         return ans
 
+
 a = Solution()
-print(a.minDifference([1,3,4,8], [[0,1],[1,2],[2,3],[0,3]]))
-print(a.minDifference([4,5,2,2,7,10], [[2,3],[0,2],[0,5],[3,5]]))
+print(a.minDifference([1, 3, 4, 8], [[0, 1], [1, 2], [2, 3], [0, 3]]))
+print(a.minDifference([4, 5, 2, 2, 7, 10], [[2, 3], [0, 2], [0, 5], [3, 5]]))

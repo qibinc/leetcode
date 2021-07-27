@@ -6,6 +6,8 @@
 
 # @lc code=start
 from collections import deque
+
+
 class Solution:
     DIRETIONS = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
@@ -19,7 +21,7 @@ class Solution:
             if board[i][0] == "O":
                 self.fill(board, i, 0)
             if board[i][len(board[0]) - 1] == "O":
-                self.fill(board, i ,len(board[0]) - 1)
+                self.fill(board, i, len(board[0]) - 1)
         for j in range(len(board[0])):
             if board[0][j] == "O":
                 self.fill(board, 0, j)
@@ -40,9 +42,15 @@ class Solution:
             for dx, dy in self.DIRETIONS:
                 newx = x + dx
                 newy = y + dy
-                if newx >= 0 and newx < len(board) and newy >= 0 and newy < len(board[0]) and board[newx][newy] == 'O':
-                    board[newx][newy] = '1'
+                if (
+                    newx >= 0
+                    and newx < len(board)
+                    and newy >= 0
+                    and newy < len(board[0])
+                    and board[newx][newy] == "O"
+                ):
+                    board[newx][newy] = "1"
                     q.append((newx, newy))
-        
-# @lc code=end
 
+
+# @lc code=end

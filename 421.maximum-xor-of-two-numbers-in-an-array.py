@@ -12,4 +12,3 @@ class Solution:
                     ans = nans
                     break
         return ans
-

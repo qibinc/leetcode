@@ -1,6 +1,7 @@
 from collections import defaultdict
 from typing import List
 
+
 class Solution:
     def kthLargestValue(self, matrix: List[List[int]], k: int) -> int:
         smatrix = [[0] * len(matrix[0]) for _ in range(len(matrix))]
@@ -23,9 +24,10 @@ class Solution:
             rank += result[i]
             if rank >= k:
                 return i
-        
+
+
 a = Solution()
-print(a.kthLargestValue([[5,2],[1,6]], 1))
-print(a.kthLargestValue([[5,2],[1,6]], 2))
-print(a.kthLargestValue([[5,2],[1,6]], 3))
-print(a.kthLargestValue([[5,2],[1,6]], 4))
+print(a.kthLargestValue([[5, 2], [1, 6]], 1))
+print(a.kthLargestValue([[5, 2], [1, 6]], 2))
+print(a.kthLargestValue([[5, 2], [1, 6]], 3))
+print(a.kthLargestValue([[5, 2], [1, 6]], 4))

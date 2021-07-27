@@ -1,6 +1,7 @@
 from typing import List
 from collections import defaultdict
 
+
 class Solution:
     def tupleSameProduct(self, nums: List[int]) -> int:
         results = defaultdict(int)
@@ -13,5 +14,6 @@ class Solution:
         print(results)
         return ans
 
+
 a = Solution()
-print(a.tupleSameProduct([2,3,4,6]))
+print(a.tupleSameProduct([2, 3, 4, 6]))

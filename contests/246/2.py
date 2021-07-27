@@ -8,11 +8,16 @@ class Solution:
         return int(time[:2]) * 4 + int(time[-2:]) // 15
 
     def numberOfRounds(self, startTime: str, finishTime: str) -> int:
-        if int(startTime[:2]) > int(finishTime[:2]) or int(startTime[:2]) == int(finishTime[:2]) and int(startTime[-2:]) > int(finishTime[-2:]):
+        if (
+            int(startTime[:2]) > int(finishTime[:2])
+            or int(startTime[:2]) == int(finishTime[:2])
+            and int(startTime[-2:]) > int(finishTime[-2:])
+        ):
             finishTime = str(int(finishTime[:2]) + 24) + finishTime[2:]
         start = self.f(startTime)
         end = self.g(finishTime)
         return end - start
+
 
 a = Solution()
 print(a.numberOfRounds("12:01", "12:44"))

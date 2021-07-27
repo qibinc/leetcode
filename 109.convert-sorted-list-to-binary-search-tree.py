@@ -25,7 +25,7 @@ class Solution:
             pointer = pointer.next
         _, root = self.construct_bst(head, 0, length)
         return root
-    
+
     def construct_bst(self, head, start, end):
         if start == end:
             return head, None
@@ -36,5 +36,5 @@ class Solution:
         head, right = self.construct_bst(head, mid + 1, end)
         return head, TreeNode(val, left, right)
 
-# @lc code=end
 
+# @lc code=end

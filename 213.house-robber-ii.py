@@ -8,7 +8,6 @@ from typing import List
 
 # @lc code=start
 class Solution:
-
     def _rob(self, nums: List[int]) -> int:
         prev, curr = 0, 0
         for m in nums:
@@ -20,11 +19,12 @@ class Solution:
         if len(nums) < 2:
             return nums[0]
         return max(self._rob(nums[1:]), self._rob(nums[:-1]))
-        
+
+
 # @lc code=end
 
 a = Solution()
 print(a.rob([2, 3, 2]))
 print(a.rob([2]))
 print(a.rob([1, 2, 3, 1]))
-print(a.rob([4,1,2,7,5,3,1]))
+print(a.rob([4, 1, 2, 7, 5, 3, 1]))

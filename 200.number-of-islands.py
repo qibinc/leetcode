@@ -15,12 +15,20 @@ class Solution:
                     cnt += 1
                     self.flood(grid, i, j)
         return cnt
-    
+
     def flood(self, grid, x, y):
         self.visited[x][y] = True
         for dx, dy in [[1, 0], [-1, 0], [0, 1], [0, -1]]:
             nx, ny = x + dx, y + dy
-            if nx >= 0 and ny >= 0 and nx < len(grid) and ny < len(grid[0]) and grid[nx][ny] == "1" and not self.visited[nx][ny]:
+            if (
+                nx >= 0
+                and ny >= 0
+                and nx < len(grid)
+                and ny < len(grid[0])
+                and grid[nx][ny] == "1"
+                and not self.visited[nx][ny]
+            ):
                 self.flood(grid, nx, ny)
-# @lc code=end
 
+
+# @lc code=end

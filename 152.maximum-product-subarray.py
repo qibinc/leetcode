@@ -7,7 +7,7 @@
 # @lc code=start
 class Solution:
     def maxProduct(self, nums: List[int]) -> int:
-        ans = -float('inf')
+        ans = -float("inf")
         cur_pos = 0
         cur_neg = 0
         for num in nums:
@@ -31,10 +31,9 @@ class Solution:
             else:
                 cur_pos = 0
                 cur_neg = 0
-        if ans == -float('inf'):
+        if ans == -float("inf"):
             return max(nums)
         return ans
 
 
 # @lc code=end
-

@@ -16,7 +16,7 @@ class Solution:
         if root is None:
             return 0
         return self.sumRootToLeafRecursive(root, 0)
-    
+
     def sumRootToLeafRecursive(self, root: TreeNode, val: int) -> int:
         if root.left is None and root.right is None:
             return (val << 1) + root.val
@@ -26,5 +26,6 @@ class Solution:
         if root.right is not None:
             ret += self.sumRootToLeafRecursive(root.right, root.val + (val << 1))
         return ret
-# @lc code=end
 
+
+# @lc code=end

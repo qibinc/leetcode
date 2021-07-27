@@ -26,6 +26,7 @@ class Solution:
     def calculate(self, s: str) -> int:
         self.idx = 0
         operators = []
+
         def calc(op1, op2, op):
             if op == "+":
                 return op1 + op2
@@ -61,6 +62,7 @@ class Solution:
                     operators.append(calc(opr1, opr2, op))
 
         return operators[0]
+
 
 # @lc code=end
 

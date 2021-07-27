@@ -1,5 +1,7 @@
 from collections import deque
 from typing import List
+
+
 class Solution:
     def visit(self, i, j, grid, visited, group):
         q = deque()
@@ -12,7 +14,14 @@ class Solution:
             group[i][j] = groupname
             for dir in [[1, 0], [-1, 0], [0, 1], [0, -1]]:
                 new_i, new_j = i + dir[0], j + dir[1]
-                if new_i >= 0 and new_j >= 0 and new_i < len(grid) and new_j < len(grid[0]) and grid[new_i][new_j] == 1 and not visited[new_i][new_j]:
+                if (
+                    new_i >= 0
+                    and new_j >= 0
+                    and new_i < len(grid)
+                    and new_j < len(grid[0])
+                    and grid[new_i][new_j] == 1
+                    and not visited[new_i][new_j]
+                ):
                     visited[new_i][new_j] = 1
                     q.append((new_i, new_j))
                     ret.add((new_i, new_j))
@@ -43,5 +52,39 @@ class Solution:
 
 
 a = Solution()
-print(a.countSubIslands([[1,1,1,0,0],[0,1,1,1,1],[0,0,0,0,0],[1,0,0,0,0],[1,1,0,1,1]], [[1,1,1,0,0],[0,0,1,1,1],[0,1,0,0,0],[1,0,1,1,0],[0,1,0,1,0]]))
-print(a.countSubIslands([[1,0,1,0,1],[1,1,1,1,1],[0,0,0,0,0],[1,1,1,1,1],[1,0,1,0,1]], [[0,0,0,0,0],[1,1,1,1,1],[0,1,0,1,0],[0,1,0,1,0],[1,0,0,0,1]]))
+print(
+    a.countSubIslands(
+        [
+            [1, 1, 1, 0, 0],
+            [0, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0],
+            [1, 1, 0, 1, 1],
+        ],
+        [
+            [1, 1, 1, 0, 0],
+            [0, 0, 1, 1, 1],
+            [0, 1, 0, 0, 0],
+            [1, 0, 1, 1, 0],
+            [0, 1, 0, 1, 0],
+        ],
+    )
+)
+print(
+    a.countSubIslands(
+        [
+            [1, 0, 1, 0, 1],
+            [1, 1, 1, 1, 1],
+            [0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1],
+            [1, 0, 1, 0, 1],
+        ],
+        [
+            [0, 0, 0, 0, 0],
+            [1, 1, 1, 1, 1],
+            [0, 1, 0, 1, 0],
+            [0, 1, 0, 1, 0],
+            [1, 0, 0, 0, 1],
+        ],
+    )
+)

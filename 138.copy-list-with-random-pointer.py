@@ -14,8 +14,9 @@ class Node:
         self.random = random
 """
 
+
 class Solution:
-    def copyRandomList(self, head: 'Node') -> 'Node':
+    def copyRandomList(self, head: "Node") -> "Node":
         pre_head = Node(0, head)
         new_pre_head = Node(0)
         cur = pre_head
@@ -34,4 +35,3 @@ class Solution:
 
 
 # @lc code=end
-

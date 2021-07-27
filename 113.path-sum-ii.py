@@ -24,7 +24,7 @@ class Solution:
                 return [[root.val]]
             else:
                 return []
-    
+
         left_ret = self._pathSum(root.left, sum - root.val)
         for x in left_ret:
             x.append(root.val)
@@ -33,6 +33,5 @@ class Solution:
             x.append(root.val)
         return left_ret + right_ret
 
-        
-# @lc code=end
 
+# @lc code=end

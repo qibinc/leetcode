@@ -8,6 +8,6 @@
 class Solution:
     def minPartitions(self, n: str) -> int:
         return max(map(int, list(str(n))))
-        
-# @lc code=end
 
+
+# @lc code=end

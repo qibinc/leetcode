@@ -36,17 +36,19 @@ class Solution:
                 if (mx, my) == cat:
                     continue
                 if self.inrange(mx, my) and self.grid[mx][my] != "#":
-                    if not self.canCatWinRecursive(cat=cat, mouse=(mx, my), step=step+1):
+                    if not self.canCatWinRecursive(
+                        cat=cat, mouse=(mx, my), step=step + 1
+                    ):
                         return True
                 else:
                     break
-        if not self.canCatWinRecursive(cat=cat, mouse=mouse, step=step+1):
+        if not self.canCatWinRecursive(cat=cat, mouse=mouse, step=step + 1):
             return True
         return False
 
     @lru_cache(None)
     def canCatWinRecursive(self, cat, mouse, step) -> bool:
-        for dx, dy in [[0, 1], [0,  -1], [1, 0], [-1, 0]]:
+        for dx, dy in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
             for jump in range(1, self.catJump + 1):
                 cx, cy = cat[0] + dx * jump, cat[1] + dy * jump
                 if (cx, cy) == self.food:
@@ -54,7 +56,9 @@ class Solution:
                 if (cx, cy) == mouse:
                     return True
                 if self.inrange(cx, cy) and self.grid[cx][cy] != "#":
-                    if not self.canMouseWinRecursive(cat=(cx, cy), mouse=mouse, step=step):
+                    if not self.canMouseWinRecursive(
+                        cat=(cx, cy), mouse=mouse, step=step
+                    ):
                         return True
                 else:
                     break
@@ -62,25 +66,37 @@ class Solution:
             return True
         return False
 
+
 a = Solution()
-print(a.canMouseWin(["####F","#C...","M...."], 1, 2))
+print(a.canMouseWin(["####F", "#C...", "M...."], 1, 2))
 a = Solution()
 print(a.canMouseWin(["M.C...F"], 1, 4))
 a = Solution()
 print(a.canMouseWin(["M.C...F"], 1, 3))
 a = Solution()
-print(a.canMouseWin(["C...#","...#F","....#","M...."], 2, 5))
+print(a.canMouseWin(["C...#", "...#F", "....#", "M...."], 2, 5))
 a = Solution()
-print(a.canMouseWin([".M...","..#..","#..#.","C#.#.","...#F"], 3, 1))
+print(a.canMouseWin([".M...", "..#..", "#..#.", "C#.#.", "...#F"], 3, 1))
 a = Solution()
-print(a.canMouseWin(["#..C...","M....#.", "######F"], 1, 5))
+print(a.canMouseWin(["#..C...", "M....#.", "######F"], 1, 5))
 a = Solution()
-print(a.canMouseWin(["CM......","#######.","........",".#######","........","#######.","........","F#######"], 1, 1))
+print(
+    a.canMouseWin(
+        [
+            "CM......",
+            "#######.",
+            "........",
+            ".#######",
+            "........",
+            "#######.",
+            "........",
+            "F#######",
+        ],
+        1,
+        1,
+    )
+)
 a = Solution()
-print(a.canMouseWin(["#...","....",".C..",".M.#","....","F..."],
-3,
-3))
+print(a.canMouseWin(["#...", "....", ".C..", ".M.#", "....", "F..."], 3, 3))
 a = Solution()
-print(a.canMouseWin(["####.##",".#C#F#.","######.","##M.###"],
-3,
-6))
+print(a.canMouseWin(["####.##", ".#C#F#.", "######.", "##M.###"], 3, 6))

@@ -6,6 +6,8 @@
 
 # @lc code=start
 from collections import deque
+
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         q = deque()
@@ -25,6 +27,5 @@ class Solution:
                     q.append(e)
         return not any(d)
 
-        
-# @lc code=end
 
+# @lc code=end

@@ -1,6 +1,7 @@
 from typing import Tuple, List, Dict
 from collections import defaultdict, deque
 
+
 class Solution:
 
     MOD = 10 ** 9 + 7
@@ -38,7 +39,26 @@ class Solution:
                     ans[y] = (ans[y] + ans[x]) % Solution.MOD
         return ans[0]
 
+
 a = Solution()
-print(a.countRestrictedPaths(5, [[1,2,3],[1,3,3],[2,3,1],[1,4,2],[5,2,2],[3,5,1],[5,4,10]]))
-print(a.countRestrictedPaths(7, [[1,3,1],[4,1,2],[7,3,4],[2,5,3],[5,6,1],[6,7,2],[7,5,3],[2,6,4]]))
-        
+print(
+    a.countRestrictedPaths(
+        5,
+        [[1, 2, 3], [1, 3, 3], [2, 3, 1], [1, 4, 2], [5, 2, 2], [3, 5, 1], [5, 4, 10]],
+    )
+)
+print(
+    a.countRestrictedPaths(
+        7,
+        [
+            [1, 3, 1],
+            [4, 1, 2],
+            [7, 3, 4],
+            [2, 5, 3],
+            [5, 6, 1],
+            [6, 7, 2],
+            [7, 5, 3],
+            [2, 6, 4],
+        ],
+    )
+)

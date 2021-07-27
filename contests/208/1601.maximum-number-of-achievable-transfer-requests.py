@@ -1,5 +1,4 @@
 class Solution:
-
     def check(self, n, reqs, choices):
         deg = [0] * n
         for req, choice in zip(reqs, choices):

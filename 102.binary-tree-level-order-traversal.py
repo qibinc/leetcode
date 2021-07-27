@@ -13,6 +13,8 @@
 #         self.right = right
 
 from collections import deque
+
+
 class Solution:
     def levelOrder(self, root: TreeNode) -> List[List[int]]:
         q = deque()
@@ -32,5 +34,5 @@ class Solution:
                 q.append((node.right, level + 1))
         return ans
 
-# @lc code=end
 
+# @lc code=end

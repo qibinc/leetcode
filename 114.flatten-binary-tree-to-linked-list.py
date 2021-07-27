@@ -35,5 +35,6 @@ class Solution:
             else:
                 tail = root
         return root, tail
-# @lc code=end
 
+
+# @lc code=end

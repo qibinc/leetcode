@@ -17,14 +17,14 @@ class Solution:
             return []
         else:
             return self._generate(list(range(1, n + 1)))
-    
+
     def _generate(self, nodes):
         if not nodes:
             return [None]
         ans = []
         for root_idx in range(len(nodes)):
             left = self._generate(nodes[:root_idx])
-            right = self._generate(nodes[root_idx+1:])
+            right = self._generate(nodes[root_idx + 1 :])
             for l in left:
                 for r in right:
                     root = TreeNode(nodes[root_idx])
@@ -32,6 +32,6 @@ class Solution:
                     root.right = r
                     ans.append(root)
         return ans
-        
-# @lc code=end
 
+
+# @lc code=end

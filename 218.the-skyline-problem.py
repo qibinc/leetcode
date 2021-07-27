@@ -9,6 +9,7 @@ from typing import List
 from collections import defaultdict
 from heapq import heapify, heappop, heappush
 
+
 class Magic:
     def __init__(self, buildings) -> None:
         self.buildings = buildings
@@ -31,6 +32,7 @@ class Magic:
         if not self.q:
             return 0
 
+
 class Solution:
     def getSkyline(self, buildings: List[List[int]]) -> List[List[int]]:
         ans = [[-1, 0]]
@@ -51,10 +53,11 @@ class Solution:
             if height != prev_height:
                 ans.append((pos, height))
         return ans[1:]
-        
+
+
 # @lc code=end
 
 
 a = Solution()
-print(a.getSkyline([[2,9,10],[3,7,15],[5,12,12],[15,20,10],[19,24,8]]))
-print(a.getSkyline([[0,2,3],[2,5,3]]))
+print(a.getSkyline([[2, 9, 10], [3, 7, 15], [5, 12, 12], [15, 20, 10], [19, 24, 8]]))
+print(a.getSkyline([[0, 2, 3], [2, 5, 3]]))

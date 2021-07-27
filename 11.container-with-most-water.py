@@ -8,6 +8,6 @@
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         pass
-        
-# @lc code=end
 
+
+# @lc code=end

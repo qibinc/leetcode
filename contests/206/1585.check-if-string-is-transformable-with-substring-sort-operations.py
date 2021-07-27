@@ -1,5 +1,6 @@
 from collections import defaultdict
 
+
 class Solution:
     def isTransformable(self, s: str, t: str) -> bool:
         if set(s) != set(t):
@@ -12,7 +13,7 @@ class Solution:
         return True
 
     def cnt(self, s):
-        l2rs = [[0]* 10 for _ in range(len(s))]
+        l2rs = [[0] * 10 for _ in range(len(s))]
         for i in range(len(s)):
             for j in range(10):
                 l2rs[i][j] = l2rs[i - 1][j]
@@ -20,5 +21,5 @@ class Solution:
         ans = defaultdict(int)
         for i in range(1, len(s)):
             for j in range(int(s[i]) + 1, 10):
-                ans[j, int(s[i])] += l2rs[i-1][j]
+                ans[j, int(s[i])] += l2rs[i - 1][j]
         return ans

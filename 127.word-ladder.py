@@ -7,6 +7,8 @@
 # @lc code=start
 from collections import deque, defaultdict
 from typing import List
+
+
 class Solution:
     def __init__(self):
         self.dict = defaultdict(list)
@@ -15,8 +17,8 @@ class Solution:
     def preprocess(self, wordList):
         for word in wordList:
             for i in range(len(word)):
-                self.comb_dict[word].append(word[:i] + "*" + word[i + 1:])
-                self.dict[word[:i] + "*" + word[i + 1:]].append(word)
+                self.comb_dict[word].append(word[:i] + "*" + word[i + 1 :])
+                self.dict[word[:i] + "*" + word[i + 1 :]].append(word)
 
     def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
         if endWord not in wordList:
@@ -36,5 +38,5 @@ class Solution:
                         q.append((w, dists[w]))
         return 0
 
-# @lc code=end
 
+# @lc code=end

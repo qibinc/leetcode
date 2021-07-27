@@ -14,7 +14,7 @@
 class Solution:
     def __init__(self):
         self.visited = []
-        
+
     def rightSideView(self, root: TreeNode) -> List[int]:
         self.rightSideViewRecursive(root, 0)
         return self.visited
@@ -28,6 +28,6 @@ class Solution:
         if self.visited[depth] is None:
             self.visited[depth] = root.val
         self.rightSideViewRecursive(root.left, depth + 1)
-        
-# @lc code=end
 
+
+# @lc code=end
