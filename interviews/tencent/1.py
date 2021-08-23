@@ -6,6 +6,7 @@
 
 from typing import List
 
+
 def max_profit(prices: List[int]) -> int:
     max_price = -1
     max_prof = 0
@@ -14,6 +15,7 @@ def max_profit(prices: List[int]) -> int:
         max_price = max(max_price, price)
     return max_prof
 
-if __name__ == '__main__':
-    print(max_profit([7,1,5,3,6,4]))
-    print(max_profit([7,6,4,3,1]))
+
+if __name__ == "__main__":
+    print(max_profit([7, 1, 5, 3, 6, 4]))
+    print(max_profit([7, 6, 4, 3, 1]))
