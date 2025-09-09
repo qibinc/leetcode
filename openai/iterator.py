@@ -58,46 +58,6 @@ class ListIterator(IteratorInterface[T]):
         self._list = deepcopy(state.l)
         self._idx = state.idx
 
-class AsyncIteratorInterface():
-    def __init__(self) -> None:
-        pass
-
-    def __aiter__(self):
-        return self
-
-    async def __anext__(self):
-        pass
-
-    def get_state(self):
-        pass
-
-    def set_state(self, state):
-        pass
-
-class AsyncListIterator(AsyncIteratorInterface, Generic[T]):
-    def __init__(self, l: List[T]) -> None:
-        self._list = l
-        self._idx = 0
-
-    async def __anext__(self) -> T:
-        await asyncio.sleep(0.01)
-        if self._idx >= len(self._list):
-            raise StopAsyncIteration
-        
-        v = self._list[self._idx]
-        self._idx += 1
-        return v
-        
-    def get_state(self) -> ListIteratorState:
-        return ListIteratorState(
-            l=deepcopy(self._list),
-            idx=self._idx,
-        )
-
-    def set_state(self, state: ListIteratorState):
-        self._list = deepcopy(state.l)
-        self._idx = state.idx
-
 def test_iterator(iterator: IteratorInterface, data: List[T]):
     states = [iterator.get_state()]
     for pos, v in enumerate(iterator):
@@ -112,38 +72,6 @@ def test_iterator(iterator: IteratorInterface, data: List[T]):
         assert list(iterator) == data[idx:]
 
     print("Test successful!")
-
-async def test_async_iterator(iterator: AsyncIteratorInterface, data: List[T]):
-    pos = 0
-    states = [iterator.get_state()]
-    async for v in iterator:
-        states.append(iterator.get_state())
-        assert v == data[pos], f"expected {data[pos]}; actual {v} at pos {pos}"
-        pos += 1
-
-    with pytest.raises(StopAsyncIteration):
-        await anext(iterator)
-
-    for idx in range(len(states)):
-        iterator.set_state(states[idx])
-        v = [x async for x in iterator]
-        assert v == data[idx:], f"expected {data[idx:]}; actual {v} at pos {idx}"
-
-    print("Test successful!")
-
-def test_list_iterator():
-    data = [2, 1, 3, 4, 5]
-    test_iterator(
-        iterator=ListIterator[int](data),
-        data=data,
-    )
-
-async def test_async_list_iterator():
-    data = [2, 1, 3, 4, 5]
-    await test_async_iterator(
-        iterator=AsyncListIterator[int](data),
-        data=data,
-    )
 
 # You're provided with a JSON file iterator, implement a resumable iterator for reading a list of JSON files.
 
@@ -213,14 +141,15 @@ class MultipleResumableFileIterator(IteratorInterface):
 
 
     def __next__(self):
-        if self._file_iterator is None: raise StopIteration
-        while self._file_id < len(self._filenames):
+        while self._file_iterator is not None:
             try:
                 return next(self._file_iterator)
             except StopIteration:
                 self._file_id += 1
                 if self._file_id < len(self._filenames):
                     self._file_iterator = ResumableFileIterator(self._filenames[self._file_id])
+                else:
+                    self._file_iterator = None
         raise StopIteration
 
     def get_state(self):
@@ -270,6 +199,77 @@ def test_multiple_file_iterator():
         data=data1 + data2,
     )
 
+class AsyncIteratorInterface():
+    def __init__(self) -> None:
+        pass
+
+    def __aiter__(self):
+        return self
+
+    async def __anext__(self):
+        pass
+
+    def get_state(self):
+        pass
+
+    def set_state(self, state):
+        pass
+
+class AsyncListIterator(AsyncIteratorInterface, Generic[T]):
+    def __init__(self, l: List[T]) -> None:
+        self._list = l
+        self._idx = 0
+
+    async def __anext__(self) -> T:
+        await asyncio.sleep(0.01)
+        if self._idx >= len(self._list):
+            raise StopAsyncIteration
+        
+        v = self._list[self._idx]
+        self._idx += 1
+        return v
+        
+    def get_state(self) -> ListIteratorState:
+        return ListIteratorState(
+            l=deepcopy(self._list),
+            idx=self._idx,
+        )
+
+    def set_state(self, state: ListIteratorState):
+        self._list = deepcopy(state.l)
+        self._idx = state.idx
+
+async def test_async_iterator(iterator: AsyncIteratorInterface, data: List[T]):
+    pos = 0
+    states = [iterator.get_state()]
+    async for v in iterator:
+        states.append(iterator.get_state())
+        assert v == data[pos], f"expected {data[pos]}; actual {v} at pos {pos}"
+        pos += 1
+
+    with pytest.raises(StopAsyncIteration):
+        await anext(iterator)
+
+    for idx in range(len(states)):
+        iterator.set_state(states[idx])
+        v = [x async for x in iterator]
+        assert v == data[idx:], f"expected {data[idx:]}; actual {v} at pos {idx}"
+
+    print("Test successful!")
+
+def test_list_iterator():
+    data = [2, 1, 3, 4, 5]
+    test_iterator(
+        iterator=ListIterator[int](data),
+        data=data,
+    )
+
+async def test_async_list_iterator():
+    data = [2, 1, 3, 4, 5]
+    await test_async_iterator(
+        iterator=AsyncListIterator[int](data),
+        data=data,
+    )
 
 class AsyncMultipleResumableFileIterator(AsyncIteratorInterface):
     def __init__(self, filenames: List[str]) -> None:
