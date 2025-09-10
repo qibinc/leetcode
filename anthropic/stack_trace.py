@@ -9,43 +9,52 @@ class Sample:
     stack: List[str]  # outermost -> innermost
 
 
-def samples_to_trace(samples: List[Sample], N: int) -> List[Tuple[float, str, str]]:
-    if not samples: return []
+def samples_to_trace(samples: List["Sample"], N: int) -> List[Tuple[float, str, str]]:
+    if not samples:
+        return []
 
-    results = []
-    counts = defaultdict(int)
-    for pos, name in enumerate(samples[0].stack):
-        counts[(pos, name)] += 1
-        if counts[pos, name] == N:
-            results.append((samples[0].t, "s", name))
+    results: List[Tuple[float, str, str]] = []
+    counts = defaultdict(int)  # (position, name) -> consecutive count
 
-    for idx in range(1, len(samples)):
-        prev_sample = samples[idx - 1]
-        sample = samples[idx]
-        t = sample.t
+    def bump(pos: int, name: str, t: float) -> None:
+        """Increment the consecutive count for (pos, name) and emit a start if it reaches N."""
+        key = (pos, name)
+        counts[key] += 1
+        if counts[key] == N:
+            results.append((t, "s", name))
 
-        # match prefix traces
+    def end_and_clear(from_pos: int, t: float) -> None:
+        """End and clear all active frames at positions >= from_pos."""
+        for (p, name), cnt in list(counts.items()):
+            if p >= from_pos:
+                if cnt >= N:
+                    results.append((t, "e", name))
+                counts.pop((p, name))
+
+    # Seed with the first sample
+    s0 = samples[0]
+    for pos, name in enumerate(s0.stack):
+        bump(pos, name, s0.t)
+
+    # Process subsequent samples
+    for prev, cur in zip(samples, samples[1:]):
+        t = cur.t
+
+        # 1) Extend the matching prefix, bumping counts
         pos = 0
-        for a, b in zip(prev_sample.stack, sample.stack):
-            if a == b:
-                counts[pos, b] += 1
-                if counts[pos, b] == N:
-                    results.append((t, "s", b))
-                pos += 1
-            else:
+        for a, b in zip(prev.stack, cur.stack):
+            if a != b:
                 break
+            bump(pos, b, t)
+            pos += 1
 
-        for c_pos, c in list(counts.keys()):
-            if c_pos >= pos:
-                if counts[c_pos, c] >= N:
-                    results.append((t, "e", c))
-                counts.pop((c_pos, c))
+        # 2) Close anything that diverged (or is beyond the prefix)
+        end_and_clear(pos, t)
 
-        # add new traces
-        for new_pos in range(pos, len(sample.stack)):
-            counts[new_pos, sample.stack[new_pos]] = 1
-            if counts[new_pos, sample.stack[new_pos]] == N:
-                results.append((sample.t, "s", sample.stack[new_pos]))
+        # 3) Start counting any new frames from the divergence point
+        for new_pos in range(pos, len(cur.stack)):
+            name = cur.stack[new_pos]
+            bump(new_pos, name, t)
 
     return results
 
@@ -66,5 +75,5 @@ if __name__ == "__main__":
     # (4.0, 'e', 'b')
     # (4.0, 'e', 'c')
 
-    for trace in samples_to_trace(s2, N=1):
+    for trace in samples_to_trace(s2, N=3):
         print(trace)

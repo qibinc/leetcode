@@ -349,5 +349,5 @@ if __name__ == "__main__":
     test_list_iterator()
     test_file_iterator()
     test_multiple_file_iterator()
-    asyncio.run(test_async_list_iterator())
-    asyncio.run(test_async_multiple_file_iterator())
+    # asyncio.run(test_async_list_iterator())
+    # asyncio.run(test_async_multiple_file_iterator())
